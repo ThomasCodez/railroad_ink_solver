@@ -23,4 +23,4 @@ The goal of this project is to implement a Monte Carlo Tree Search (MCTS) algori
   ```
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License
