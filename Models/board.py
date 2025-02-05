@@ -7,6 +7,11 @@ import json
 
 
 class Board:
+  '''
+  Represents the game board for Railroad Ink. The board is a 7x7 grid of Squares, 
+  each with (possible) connectors on its north, east, south, and west sides.
+  Game Information is persisted on the squares itself.
+  '''
   def __init__(self):
     self._grid = self._create_grid()
     
