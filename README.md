@@ -7,8 +7,8 @@ The goal of this project is to implement a Monte Carlo Tree Search (MCTS) algori
 
 1. **Clone the Repository**
   ```sh
-  git clone https://github.com/yourusername/RailroadInk_Solver.git
-  cd RailroadInk_Solver
+  git clone https://github.com/ThomasCodez/railroad_ink_solver.git
+  cd railroad_ink_solver
   ```
   
 
