@@ -88,7 +88,7 @@ class Board:
     if x == 0 and (y == 1 or y == 5):
       return SquareConnectorType.railway
       
-    if x == 0 and y == 3:
+    if x == 6 and y == 3:
       return SquareConnectorType.highway
     
     return SquareConnectorType.none
