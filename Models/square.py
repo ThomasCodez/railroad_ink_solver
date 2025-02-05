@@ -91,5 +91,11 @@ class Square:
       return True
     
     return False
-    
+  
+  def __str__(self):
+    return (
+        f"Square({self.x}, {self.y}) | "
+        f"N: {self.north}, E: {self.east}, S: {self.south}, W: {self.west} | "
+        f"Central: {self.is_central} | Piece: {self.piece}"
+    )
   
