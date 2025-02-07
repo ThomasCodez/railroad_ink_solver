@@ -16,18 +16,29 @@ class Piece:
     
     has_train_station: Indicates, whether the piece has a train station, where transfer from rail to road is possible.
   '''
-  def __init__(self,
+  def __init__(
+    self,
+    name: str,
+    has_rail_station: bool,
     north: SquareConnectorType,
     east: SquareConnectorType,
     south: SquareConnectorType,
     west: SquareConnectorType,
-    has_train_station: bool
   ):
+    self._name = name
     self._north = north
     self._east = east
     self._south = south
     self._west = west
-    self._has_train_station = has_train_station
+    self._has_train_station = has_rail_station
+  
+  @property
+  def name(self) -> str:
+    return self._name
+  
+  @property
+  def has_train_station(self) -> bool:
+    return self._has_train_station
 
   @property
   def north(self) -> SquareConnectorType:
@@ -45,6 +56,9 @@ class Piece:
   def west(self) -> SquareConnectorType:
     return self._west
 
-  @property
-  def has_train_station(self) -> bool:
-    return self._has_train_station
+  def __str__(self) -> str:
+    return (
+      f"Name: {self.name}"
+      f"Has Train Station?: {self.has_train_station}"
+      f"N: {self.north}, E: {self.east}, S: {self.south}, W: {self.west}"
+    )

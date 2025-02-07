@@ -4,6 +4,9 @@ from Models.square import Square
 
 
 def test_board_setup():
+  '''
+  Tests, whether the board is setup correctly with correct connectors at the edges and double point squares in the middle.
+  '''
   board = Board()
   grid = board.grid
   board.to_json()
@@ -17,14 +20,14 @@ def test_board_setup():
           assert square.west is SquareConnectorType.railway
           
         if row == 3:
-          assert square.west is SquareConnectorType.highway
+          assert square.west is SquareConnectorType.road
       
       if col in (1, 5):
         if row == 0:
-          assert square.north is SquareConnectorType.highway
+          assert square.north is SquareConnectorType.road
 
         if row == 6:
-          assert square.south is SquareConnectorType.highway
+          assert square.south is SquareConnectorType.road
         
       if col in (2,4):
         if row in (2,3,4):
@@ -45,7 +48,7 @@ def test_board_setup():
           assert square.east is SquareConnectorType.railway
           
         if row == 3:
-          assert square.east is SquareConnectorType.highway
+          assert square.east is SquareConnectorType.road
           
           
       

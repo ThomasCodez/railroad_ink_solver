@@ -45,7 +45,7 @@ class Board:
     '''
     
     if (x == 1 or x == 5) and y == 0:
-      return SquareConnectorType.highway
+      return SquareConnectorType.road
       
     if x == 3 and y == 0:
       return SquareConnectorType.railway
@@ -61,7 +61,7 @@ class Board:
       return SquareConnectorType.railway
       
     if x == 6 and y == 3:
-      return SquareConnectorType.highway
+      return SquareConnectorType.road
     
     return SquareConnectorType.none
   
@@ -71,7 +71,7 @@ class Board:
     '''
     
     if (x == 1 or x == 5) and y == 6:
-      return SquareConnectorType.highway
+      return SquareConnectorType.road
       
     if x == 3 and y == 6:
       return SquareConnectorType.railway
@@ -87,7 +87,7 @@ class Board:
       return SquareConnectorType.railway
       
     if x == 0 and y == 3:
-      return SquareConnectorType.highway
+      return SquareConnectorType.road
     
     return SquareConnectorType.none
   
