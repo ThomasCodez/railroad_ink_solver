@@ -33,7 +33,7 @@
       "north": "none",
       "east": "none",
       "south": "none",
-      "west": "highway",
+      "west": "road",
       "is_central": false
     },
     {
@@ -68,7 +68,7 @@
     {
       "x": 1,
       "y": 0,
-      "north": "highway",
+      "north": "road",
       "east": "none",
       "south": "none",
       "west": "none",
@@ -124,7 +124,7 @@
       "y": 6,
       "north": "none",
       "east": "none",
-      "south": "highway",
+      "south": "road",
       "west": "none",
       "is_central": false
     }
@@ -328,7 +328,7 @@
     {
       "x": 5,
       "y": 0,
-      "north": "highway",
+      "north": "road",
       "east": "none",
       "south": "none",
       "west": "none",
@@ -384,7 +384,7 @@
       "y": 6,
       "north": "none",
       "east": "none",
-      "south": "highway",
+      "south": "road",
       "west": "none",
       "is_central": false
     }
@@ -421,7 +421,7 @@
       "x": 6,
       "y": 3,
       "north": "none",
-      "east": "highway",
+      "east": "road",
       "south": "none",
       "west": "none",
       "is_central": false
