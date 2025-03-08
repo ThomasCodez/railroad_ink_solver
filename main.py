@@ -1,6 +1,6 @@
 from Models.board import Board
 from Models.enums import BasicDice
-from Services.piece_services import get_all_basic_pieces, get_basic_pieces_for_dice
+from Services.piece_service import get_all_basic_pieces, get_basic_pieces_for_dice
 
 board = Board()
 pieces = get_all_basic_pieces()

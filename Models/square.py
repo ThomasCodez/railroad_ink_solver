@@ -11,13 +11,13 @@ class Square:
     
     y: y coordinate of the square. Increases from right to left. 0 < y < 7
     
-    north: indicates the type of onramp the square has to the north
+    north: indicates the type of connector the square has to the north
     
-    east: indicates the type of onramp the square has to the east
+    east: indicates the type of connector the square has to the east
     
-    south: indicates the type of onramp the square has to the south
+    south: indicates the type of connector the square has to the south
     
-    west: indicates the type of onramp the square has to the west
+    west: indicates the type of connector the square has to the west
     
     is_central: indicates whether the square is one of nine central squares. 
                This is determined based on the passed x and y coordinates.

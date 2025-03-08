@@ -1,6 +1,6 @@
 from Models.enums import SquareConnectorType
 from Models.square import Square
-from typing import List
+from typing import List, Set
 import json
 
 
@@ -91,6 +91,24 @@ class Board:
     
     return SquareConnectorType.none
   
+  def getExitNodes(self) -> Set[Square]:
+    '''
+    Returns the exit nodes of the board.
+    '''
+    return {self.grid[0][1], 
+            self.grid[0][3], 
+            self.grid[0][5], 
+            self.grid[1][0],
+            self.grid[1][6],
+            self.grid[3][0],
+            self.grid[3][6],
+            self.grid[5][0],
+            self.grid[5][6],
+            self.grid[6][1],
+            self.grid[6][3],
+            self.grid[6][5]
+          }
+    
   def to_json(self) -> None:
     '''
     Exports the board grid to a JSON string.
