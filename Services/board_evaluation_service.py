@@ -63,6 +63,7 @@ def _traverse_network(node: Square, exit_nodes: Set[Square], visited: Set[Square
   visited.add(node)
   
   if(node in exit_nodes):
+    # TODO: Check that the piece actually connects to the exit!
     visited_exit_nodes.add(node)
     
   # Add all neighbors where the piece connects to, don't add neighbors whose connectors don't fit -> Not the same network!
