@@ -1,6 +1,6 @@
 [
   {
-    "name": "three_road_one_railway",
+    "name": "three_road_one_railway_south",
     "has_rail_station": true,
     "north": "road",
     "east": "road",
@@ -8,7 +8,7 @@
     "west": "road"
   },
   {
-    "name": "three_road_one_railway",
+    "name": "three_road_one_railway_west",
     "has_rail_station": true,
     "north": "road",
     "east": "road",
@@ -16,7 +16,7 @@
     "west": "railway"
   },
   {
-    "name": "three_road_one_railway",
+    "name": "three_road_one_railway_north",
     "has_rail_station": true,
     "north": "railway",
     "east": "road",
@@ -24,7 +24,7 @@
     "west": "road"
   },
   {
-    "name": "three_road_one_railway",
+    "name": "three_road_one_railway_east",
     "has_rail_station": true,
     "north": "road",
     "east": "railway",
@@ -32,7 +32,7 @@
     "west": "road"
   },
   {
-    "name": "three_railway_one_road",
+    "name": "three_railway_one_road_north",
     "has_rail_station": true,
     "north": "road",
     "east": "railway",
@@ -40,7 +40,7 @@
     "west": "railway"
   },
   {
-    "name": "three_railway_one_road",
+    "name": "three_railway_one_road_east",
     "has_rail_station": true,
     "north": "railway",
     "east": "road",
@@ -48,7 +48,7 @@
     "west": "railway"
   },
   {
-    "name": "three_railway_one_road",
+    "name": "three_railway_one_road_south",
     "has_rail_station": true,
     "north": "railway",
     "east": "railway",
@@ -56,7 +56,7 @@
     "west": "railway"
   },
   {
-    "name": "three_railway_one_road",
+    "name": "three_railway_one_road_west",
     "has_rail_station": true,
     "north": "railway",
     "east": "railway",
@@ -80,7 +80,7 @@
     "west": "railway"
   },
   {
-    "name": "two_road_two_rail_curved",
+    "name": "two_road_two_rail_curved_east_south",
     "has_rail_station": true,
     "north": "road",
     "east": "railway",
@@ -88,7 +88,7 @@
     "west": "road"
   },
   {
-    "name": "two_road_two_rail_curved",
+    "name": "two_road_two_rail_curved_south_west",
     "has_rail_station": true,
     "north": "road",
     "east": "road",
@@ -96,7 +96,7 @@
     "west": "railway"
   },
   {
-    "name": "two_road_two_rail_curved",
+    "name": "two_road_two_rail_curved_west_north",
     "has_rail_station": true,
     "north": "railway",
     "east": "road",
@@ -104,7 +104,7 @@
     "west": "railway"
   },
   {
-    "name": "two_road_two_rail_curved",
+    "name": "two_road_two_rail_curved_north_east",
     "has_rail_station": true,
     "north": "railway",
     "east": "railway",
@@ -112,7 +112,7 @@
     "west": "road"
   },
   {
-    "name": "two_road_two_rail_straight",
+    "name": "two_road_two_rail_straight_east_west",
     "has_rail_station": true,
     "north": "road",
     "east": "railway",
@@ -120,7 +120,7 @@
     "west": "railway"
   },
   {
-    "name": "two_road_two_rail_straight",
+    "name": "two_road_two_rail_straight_north_south",
     "has_rail_station": true,
     "north": "railway",
     "east": "road",

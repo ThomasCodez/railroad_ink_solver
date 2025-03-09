@@ -1,6 +1,6 @@
 [
   {
-    "name": "straight_train_station",
+    "name": "straight_train_station_north_road_south_rail",
     "has_rail_station": true,
     "north": "road",
     "east": "none",
@@ -8,7 +8,7 @@
     "west": "none"
   },
   {
-    "name": "straight_train_station",
+    "name": "straight_train_station_east_road_west_rail",
     "has_rail_station": true,
     "north": "none",
     "east": "road",
@@ -16,7 +16,7 @@
     "west": "railway"
   },
   {
-    "name": "straight_train_station",
+    "name": "straight_train_station_north_rail_south_road",
     "has_rail_station": true,
     "north": "railway",
     "east": "none",
@@ -24,7 +24,7 @@
     "west": "none"
   },
   {
-    "name": "straight_train_station",
+    "name": "straight_train_station_east_rail_west_road",
     "has_rail_station": true,
     "north": "none",
     "east": "railway",
@@ -32,7 +32,7 @@
     "west": "road"
   },
   {
-    "name": "curved_train_station",
+    "name": "curved_train_station_north_road_east_rail",
     "has_rail_station": true,
     "north": "road",
     "east": "railway",
@@ -40,7 +40,7 @@
     "west": "none"
   },
   {
-    "name": "curved_train_station",
+    "name": "curved_train_station_east_road_south_rail",
     "has_rail_station": true,
     "north": "none",
     "east": "road",
@@ -48,7 +48,7 @@
     "west": "none"
   },
   {
-    "name": "curved_train_station",
+    "name": "curved_train_station_south_road_west_rail",
     "has_rail_station": true,
     "north": "none",
     "east": "none",
@@ -56,7 +56,7 @@
     "west": "railway"
   },
   {
-    "name": "curved_train_station",
+    "name": "curved_train_station_north_rail_west_road",
     "has_rail_station": true,
     "north": "railway",
     "east": "none",
@@ -64,7 +64,7 @@
     "west": "road"
   },
   {
-    "name": "underpass",
+    "name": "underpass_east_west",
     "has_rail_station": false,
     "north": "railway",
     "east": "road",
@@ -72,7 +72,7 @@
     "west": "road"
   },
   {
-    "name": "underpass",
+    "name": "underpass_north_south",
     "has_rail_station": false,
     "north": "road",
     "east": "railway",

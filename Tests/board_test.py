@@ -50,8 +50,12 @@ def test_board_setup():
         if row == 3:
           assert square.east is SquareConnectorType.road
           
-          
-      
+def test_board_evaluation_one_network():
+  pass
+def test_board_evaluation_two_networks():
+  pass
+def test_board_evaluation_no_connected_exit_nodes():
+  pass
         
           
       
