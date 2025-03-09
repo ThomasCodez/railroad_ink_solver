@@ -1,4 +1,4 @@
-from Models.enums import SquareConnectorType
+from Models.enums import BasicDice, SpecialDice, SquareConnectorType, UniqueTiles
 
 
 class Piece:
@@ -19,6 +19,7 @@ class Piece:
   def __init__(
     self,
     name: str,
+    dice: BasicDice | SpecialDice | UniqueTiles,
     has_rail_station: bool,
     north: SquareConnectorType,
     east: SquareConnectorType,
@@ -26,6 +27,7 @@ class Piece:
     west: SquareConnectorType,
   ):
     self._name = name
+    self._dice = dice
     self._north = north
     self._east = east
     self._south = south
@@ -35,6 +37,10 @@ class Piece:
   @property
   def name(self) -> str:
     return self._name
+
+  @property
+  def dice(self) -> BasicDice | SpecialDice | UniqueTiles:
+    return self._dice
   
   @property
   def has_train_station(self) -> bool:
@@ -59,6 +65,7 @@ class Piece:
   def __str__(self) -> str:
     return (
       f"Name: {self.name}"
+      f"Dice: {self.dice}"
       f"Has Train Station?: {self.has_train_station}"
       f"N: {self.north}, E: {self.east}, S: {self.south}, W: {self.west}"
     )

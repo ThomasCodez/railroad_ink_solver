@@ -1,7 +1,10 @@
+from __future__ import annotations #
 from Models.enums import SquareConnectorType
 from Models.square import Square
 from typing import List, Set
 import json
+
+from Services.Pieces.piece_service import get_piece_by_name
 
 
 class Board:
@@ -126,11 +129,34 @@ class Board:
           'east': square.east.name,
           'south': square.south.name,
           'west': square.west.name,
-          'is_central': square.is_central
+          'is_central': square.is_central,
+          'piece': square.piece.name if square.piece else None
         })
       grid_data.append(row_data) # type: ignore
     
     data = json.dumps(grid_data, indent=2)
+    print("we are here")
     
     with open("board.json", 'w') as file:
       file.write(data)
+      
+  @classmethod
+  def from_json(cls, json_data: str) -> Board | None:
+    '''
+    Creates a board based on the passed json data. Specifically, the grid is determined as usual, however pieces are placed 
+    on the board based on the passed json data. 
+    
+    Parameters
+    ----------
+    json_data : str
+        The json should be an array of objects, where each object has the fields 'x', 'y' and 'piece'. 0 <= 'x' <= 6, 0 <= 'y' <= 6 and 'piece' should be the name matching to one of the pieces. 
+    '''
+    data = json.loads(json_data)
+    
+    board = Board()
+    grid = board.grid
+    
+    for entry in data:
+      square: Square = grid[entry['x']][entry['y']] # type: ignore
+      square.piece = get_piece_by_name(entry['piece'])
+    

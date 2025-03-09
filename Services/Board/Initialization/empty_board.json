@@ -7,7 +7,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 0,
@@ -16,7 +17,8 @@
       "east": "none",
       "south": "none",
       "west": "railway",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 0,
@@ -25,7 +27,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 0,
@@ -33,8 +36,9 @@
       "north": "none",
       "east": "none",
       "south": "none",
-      "west": "highway",
-      "is_central": false
+      "west": "road",
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 0,
@@ -43,7 +47,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 0,
@@ -52,7 +57,8 @@
       "east": "none",
       "south": "none",
       "west": "railway",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 0,
@@ -61,18 +67,20 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     }
   ],
   [
     {
       "x": 1,
       "y": 0,
-      "north": "highway",
+      "north": "road",
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 1,
@@ -81,7 +89,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 1,
@@ -90,7 +99,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 1,
@@ -99,7 +109,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 1,
@@ -108,7 +119,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 1,
@@ -117,16 +129,18 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 1,
       "y": 6,
       "north": "none",
       "east": "none",
-      "south": "highway",
+      "south": "road",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     }
   ],
   [
@@ -137,7 +151,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 2,
@@ -146,7 +161,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 2,
@@ -155,7 +171,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": true
+      "is_central": true,
+      "piece": null
     },
     {
       "x": 2,
@@ -164,7 +181,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": true
+      "is_central": true,
+      "piece": null
     },
     {
       "x": 2,
@@ -173,7 +191,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": true
+      "is_central": true,
+      "piece": null
     },
     {
       "x": 2,
@@ -182,7 +201,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 2,
@@ -191,7 +211,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     }
   ],
   [
@@ -202,7 +223,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 3,
@@ -211,7 +233,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 3,
@@ -220,7 +243,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": true
+      "is_central": true,
+      "piece": null
     },
     {
       "x": 3,
@@ -229,7 +253,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": true
+      "is_central": true,
+      "piece": null
     },
     {
       "x": 3,
@@ -238,7 +263,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": true
+      "is_central": true,
+      "piece": null
     },
     {
       "x": 3,
@@ -247,7 +273,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 3,
@@ -256,7 +283,8 @@
       "east": "none",
       "south": "railway",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     }
   ],
   [
@@ -267,7 +295,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 4,
@@ -276,7 +305,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 4,
@@ -285,7 +315,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": true
+      "is_central": true,
+      "piece": null
     },
     {
       "x": 4,
@@ -294,7 +325,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": true
+      "is_central": true,
+      "piece": null
     },
     {
       "x": 4,
@@ -303,7 +335,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": true
+      "is_central": true,
+      "piece": null
     },
     {
       "x": 4,
@@ -312,7 +345,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 4,
@@ -321,18 +355,20 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     }
   ],
   [
     {
       "x": 5,
       "y": 0,
-      "north": "highway",
+      "north": "road",
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 5,
@@ -341,7 +377,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 5,
@@ -350,7 +387,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 5,
@@ -359,7 +397,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 5,
@@ -368,7 +407,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 5,
@@ -377,16 +417,18 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 5,
       "y": 6,
       "north": "none",
       "east": "none",
-      "south": "highway",
+      "south": "road",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     }
   ],
   [
@@ -397,7 +439,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 6,
@@ -406,7 +449,8 @@
       "east": "railway",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 6,
@@ -415,16 +459,18 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 6,
       "y": 3,
       "north": "none",
-      "east": "highway",
+      "east": "road",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 6,
@@ -433,7 +479,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 6,
@@ -442,7 +489,8 @@
       "east": "railway",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     },
     {
       "x": 6,
@@ -451,7 +499,8 @@
       "east": "none",
       "south": "none",
       "west": "none",
-      "is_central": false
+      "is_central": false,
+      "piece": null
     }
   ]
 ]

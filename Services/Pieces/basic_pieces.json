@@ -1,6 +1,7 @@
 [
   {
     "name": "straight_rail_north_south",
+    "dice": "straight_rail",
     "has_rail_station": false,
     "north": "railway",
     "east": "none",
@@ -9,6 +10,7 @@
   },
   {
     "name": "straight_rail_east_west",
+    "dice": "straight_rail",
     "has_rail_station": false,
     "north": "none",
     "east": "railway",
@@ -17,6 +19,7 @@
   },
   {
     "name": "curved_rail_north_east",
+    "dice": "curved_rail",
     "has_rail_station": false,
     "north": "railway",
     "east": "railway",
@@ -25,6 +28,7 @@
   },
   {
     "name": "curved_rail_east_south",
+    "dice": "curved_rail",
     "has_rail_station": false,
     "north": "none",
     "east": "railway",
@@ -33,6 +37,7 @@
   },
   {
     "name": "curved_rail_south_west",
+    "dice": "curved_rail",
     "has_rail_station": false,
     "north": "none",
     "east": "none",
@@ -41,6 +46,7 @@
   },
   {
     "name": "curved_rail_west_north",
+    "dice": "curved_rail",
     "has_rail_station": false,
     "north": "railway",
     "east": "none",
@@ -49,6 +55,7 @@
   },
   {
     "name": "rail_t_junction_north_east_west",
+    "dice": "rail_t_junction",
     "has_rail_station": false,
     "north": "railway",
     "east": "railway",
@@ -57,6 +64,7 @@
   },
   {
     "name": "rail_t_junction_north_east_south",
+    "dice": "rail_t_junction",
     "has_rail_station": false,
     "north": "railway",
     "east": "railway",
@@ -65,6 +73,7 @@
   },
   {
     "name": "rail_t_junction_east_south_west",
+    "dice": "rail_t_junction",
     "has_rail_station": false,
     "north": "none",
     "east": "railway",
@@ -73,6 +82,7 @@
   },
   {
     "name": "rail_t_junction_north_south_west",
+    "dice": "rail_t_junction",
     "has_rail_station": false,
     "north": "railway",
     "east": "none",
@@ -80,7 +90,8 @@
     "west": "railway"
   },
   {
-    "name": "straigh_road_north_south",
+    "name": "straight_road_north_south",
+    "dice": "straight_road",
     "has_rail_station": false,
     "north": "road",
     "east": "none",
@@ -88,7 +99,8 @@
     "west": "none"
   },
   {
-    "name": "straigh_road_east_west",
+    "name": "straight_road_east_west",
+    "dice": "straight_road",
     "has_rail_station": false,
     "north": "none",
     "east": "road",
@@ -97,6 +109,7 @@
   },
   {
     "name": "curved_road_north_east",
+    "dice": "curved_road",
     "has_rail_station": false,
     "north": "road",
     "east": "road",
@@ -105,6 +118,7 @@
   },
   {
     "name": "curved_road_east_south",
+    "dice": "curved_road",
     "has_rail_station": false,
     "north": "none",
     "east": "road",
@@ -113,6 +127,7 @@
   },
   {
     "name": "curved_road_south_west",
+    "dice": "curved_road",
     "has_rail_station": false,
     "north": "none",
     "east": "none",
@@ -121,6 +136,7 @@
   },
   {
     "name": "curved_road_west_north",
+    "dice": "curved_road",
     "has_rail_station": false,
     "north": "road",
     "east": "none",
@@ -129,6 +145,7 @@
   },
   {
     "name": "road_t_junction_north_east_west",
+    "dice": "road_t_junction",
     "has_rail_station": false,
     "north": "road",
     "east": "road",
@@ -137,6 +154,7 @@
   },
   {
     "name": "road_t_junction_north_east_south",
+    "dice": "road_t_junction",
     "has_rail_station": false,
     "north": "road",
     "east": "road",
@@ -145,6 +163,7 @@
   },
   {
     "name": "road_t_junction_east_south_west",
+    "dice": "road_t_junction",
     "has_rail_station": false,
     "north": "none",
     "east": "road",
@@ -153,6 +172,7 @@
   },
   {
     "name": "road_t_junction_north_south_west",
+    "dice": "road_t_junction",
     "has_rail_station": false,
     "north": "road",
     "east": "none",
