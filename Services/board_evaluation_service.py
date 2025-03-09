@@ -26,25 +26,11 @@ def _determine_points_from_networks(board: Board) -> int:
   
   for node in exit_nodes:
     # Check if node is in network or doesn't have a piece
-    if node in visited_exit_nodes or node.piece is None:
+    if node in visited_exit_nodes:
       continue
     
-    # Check if piece on node matches connector of square
-    if node.north != SquareConnectorType.none:
-      if node.north != node.piece.north:
-        continue
-    
-    if node.east != SquareConnectorType.none:
-      if node.east != node.piece.east:
-        continue
-    
-    if node.west != SquareConnectorType.none:
-      if node.west != node.piece.west:
-        continue
-    
-    if node.south != SquareConnectorType.none:
-      if node.south != node.piece.south:
-        continue
+    if _piece_fits_exit_node(node) is False:
+      continue
     
     visited: Set[Square] = set()
       
@@ -63,8 +49,9 @@ def _traverse_network(node: Square, exit_nodes: Set[Square], visited: Set[Square
   visited.add(node)
   
   if(node in exit_nodes):
-    # TODO: Check that the piece actually connects to the exit!
-    visited_exit_nodes.add(node)
+    # Only add to network if the piece fits the exit node
+    if _piece_fits_exit_node(node) is True:
+      visited_exit_nodes.add(node)
     
   # Add all neighbors where the piece connects to, don't add neighbors whose connectors don't fit -> Not the same network!
   neighbors: Set[Square] = _get_neighbors(node, board)
@@ -94,6 +81,7 @@ def _get_neighbors(node: Square, board: Board) -> Set[Square]:
       return set()
       
     neighbors: Set[Square] = set()
+    
     if node.piece.north != SquareConnectorType.none and node.y > 0:
       adjacent = board.grid[node.x][node.y - 1]
     
@@ -120,6 +108,30 @@ def _get_neighbors(node: Square, board: Board) -> Set[Square]:
         
     return neighbors
         
+def _piece_fits_exit_node(node: Square) -> bool:
+    '''
+    Checks whether a piece fits to the exit node. To do so, the square's connector must equal the piece's connector. I.E, square.north is rail, the piece's north connector sholuld also be rail.
+    '''
+    if node.piece is None:
+      return False
+    if node.north != SquareConnectorType.none:
+      if node.north == node.piece.north:
+        return True
+    
+    if node.east != SquareConnectorType.none:
+      if node.east == node.piece.east:
+        return True
+    
+    if node.west != SquareConnectorType.none:
+      if node.west == node.piece.west:
+        return True
+    
+    if node.south != SquareConnectorType.none:
+      if node.south == node.piece.south:
+        return True
+      
+    return False
+    
     
     
   
