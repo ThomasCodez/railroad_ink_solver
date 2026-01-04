@@ -1,6 +1,6 @@
 from typing import List, Set
 from Models.board import Board
-from Models.enums import SquareConnectorType
+from Models.enums import SpecialDice, SquareConnectorType
 from Models.square import Square
 
 
@@ -8,17 +8,17 @@ def evaluate_board_position(board: Board) -> int:
   grid = board.grid
   
   total_points: int = 0
-  total_points += _determine_points_from_central_squares(grid)
-  total_points += _determine_points_from_networks(board)
+  total_points += __determine_points_from_central_squares(grid)
+  total_points += __determine_points_from_networks(board)
   
   return total_points
   
-def _determine_points_from_central_squares(grid: List[List[Square]]) -> int:
-  central_squares: List[Square] = [square for row in grid for square in row if square.is_central and square.piece is not None]
+def __determine_points_from_central_squares(grid: List[List[Square]]) -> int:
+  occupied_central_squares: List[Square] = [square for row in grid for square in row if square.is_central and square.piece is not None]
   
-  return len(central_squares)
+  return len(occupied_central_squares)
 
-def _determine_points_from_networks(board: Board) -> int:
+def __determine_points_from_networks(board: Board) -> int:
   exit_nodes: Set[Square] = board.getExitNodes()
   visited_exit_nodes: Set[Square] = set()
   
@@ -29,16 +29,16 @@ def _determine_points_from_networks(board: Board) -> int:
     if node in visited_exit_nodes:
       continue
     
-    if _piece_fits_exit_node(node) is False:
+    if __piece_fits_exit_node(node) is False:
       continue
     
     visited: Set[Square] = set()
       
-    total_points += _traverse_network(node, exit_nodes, visited, visited_exit_nodes, board)
+    total_points += __traverse_network(node, exit_nodes, visited, visited_exit_nodes, board)
     
   return total_points
 
-def _traverse_network(node: Square, exit_nodes: Set[Square], visited: Set[Square], visited_exit_nodes: Set[Square], board: Board) -> int:
+def __traverse_network(node: Square, exit_nodes: Set[Square], visited: Set[Square], visited_exit_nodes: Set[Square], board: Board) -> int:
   '''
   Traverses the network recursively from an initial start node. Returns the amount of points this network is worth. 
   Updates the visisted exit nodes 
@@ -47,17 +47,17 @@ def _traverse_network(node: Square, exit_nodes: Set[Square], visited: Set[Square
     return 0
   
   visited.add(node)
-  
-  if(node in exit_nodes):
+
+  if node in exit_nodes:
     # Only add to network if the piece fits the exit node
-    if _piece_fits_exit_node(node) is True:
+    if __piece_fits_exit_node(node):
       visited_exit_nodes.add(node)
     
   # Add all neighbors where the piece connects to, don't add neighbors whose connectors don't fit -> Not the same network!
-  neighbors: Set[Square] = _get_neighbors(node, board)
+  neighbors: Set[Square] = __get_neighbors(node, board)
     
   for neighbor in neighbors:
-    _traverse_network(neighbor, exit_nodes, visited, visited_exit_nodes, board)
+    __traverse_network(neighbor, exit_nodes, visited, visited_exit_nodes, board)
   
   scores: dict[int, int] = {
     2: 4,
@@ -76,9 +76,16 @@ def _traverse_network(node: Square, exit_nodes: Set[Square], visited: Set[Square
   return scores[len(visited.intersection(exit_nodes))]
   
 
-def _get_neighbors(node: Square, board: Board) -> Set[Square]:
+def __get_neighbors(node: Square, board: Board) -> Set[Square]:
+    '''
+    Returns all neighbors of a square that have a piece and the piece fits the connector. Undergrounds are treated specially.
+    '''
     if node.piece is None:
       return set()
+    
+    # Special case: Undergrounds. 
+    if node.piece.dice == SpecialDice.underground:
+      pass # We have to fucking do something about this, but I don't know what yet.
       
     neighbors: Set[Square] = set()
     
@@ -108,12 +115,13 @@ def _get_neighbors(node: Square, board: Board) -> Set[Square]:
         
     return neighbors
         
-def _piece_fits_exit_node(node: Square) -> bool:
+def __piece_fits_exit_node(node: Square) -> bool:
     '''
     Checks whether a piece fits to the exit node. To do so, the square's connector must equal the piece's connector. I.E, square.north is rail, the piece's north connector sholuld also be rail.
     '''
     if node.piece is None:
       return False
+    
     if node.north != SquareConnectorType.none:
       if node.north == node.piece.north:
         return True

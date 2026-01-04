@@ -141,7 +141,7 @@ class Board:
       file.write(data)
       
   @classmethod
-  def from_json(cls, json_data: str) -> Board | None:
+  def from_json(cls, json_data: str) -> Board:
     '''
     Creates a board based on the passed json data. Specifically, the grid is determined as usual, however pieces are placed 
     on the board based on the passed json data. 
@@ -156,7 +156,12 @@ class Board:
     board = Board()
     grid = board.grid
     
-    for entry in data:
-      square: Square = grid[entry['x']][entry['y']] # type: ignore
-      square.piece = get_piece_by_name(entry['piece'])
+    for row in data:
+      for col in row:
+        print(col)
+        square: Square = grid[col['x']][col['y']] # type: ignore
+        if col['piece'] is not None:
+          square.piece = get_piece_by_name(col['piece'])
+    
+    return board
     

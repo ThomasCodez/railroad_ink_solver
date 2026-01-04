@@ -1,7 +1,12 @@
+import os
 from Models.board import Board
 from Models.enums import SquareConnectorType
 from Models.square import Square
+from Services.Board.Evaluation.board_evaluation_service import evaluate_board_position
+from Services.Board.Evaluation.board_evaluation_service import __determine_points_from_networks # type: ignore
+from Services.Board.Evaluation.board_evaluation_service import __determine_points_from_central_squares # type: ignore
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
 
 def test_board_setup():
   '''
@@ -50,12 +55,41 @@ def test_board_setup():
         if row == 3:
           assert square.east is SquareConnectorType.road
           
+def test_board_evaluation_with_empty_board():
+  '''
+  Tests, whether the board evaluation returns the correct amount of points for an empty board.
+  '''
+  with open(os.path.join(current_dir, "Boards/empty_board.json")) as f:
+    board = Board.from_json(f.read())
+    points = evaluate_board_position(board)
+    assert points == 0
+          
 def test_board_evaluation_one_network():
-  pass
+  '''
+  Tests, whether the board evaluation returns the correct amount of points for a board with one network.
+  '''
+  with open(os.path.join(current_dir, "Boards/one_network_board.json")) as f:
+    board = Board.from_json(f.read())
+    points = __determine_points_from_networks(board)
+    assert points == 4
+    
 def test_board_evaluation_two_networks():
-  pass
-def test_board_evaluation_no_connected_exit_nodes():
-  pass
+  '''
+  Tests, whether the board evaluation returns the correct amount of points for a board with two networks.
+  '''
+  with open(os.path.join(current_dir, "Boards/two_networks_board.json")) as f:
+    board = Board.from_json(f.read())
+    points = __determine_points_from_networks(board)
+    assert points == 12
+
+def test_board_evaluation_with_central_squares():
+  '''
+  Tests, whether the board evaluation returns the correct amount of points for a board with all central squares occupied.
+  '''
+  with open(os.path.join(current_dir, "Boards/central_squares_board.json")) as f:
+    board = Board.from_json(f.read())
+    points = __determine_points_from_central_squares(board.grid)
+    assert points == 9
         
           
       
