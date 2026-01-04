@@ -2,7 +2,7 @@ import os
 from Models.board import Board
 from Models.enums import SquareConnectorType
 from Models.square import Square
-from Services.Board.Evaluation.board_evaluation_service import evaluate_board_position
+from Services.Board.Evaluation.board_evaluation_service import __determine_points_from_longest_railway, __determine_points_from_longest_road, evaluate_board_position # type: ignore
 from Services.Board.Evaluation.board_evaluation_service import __determine_points_from_networks # type: ignore
 from Services.Board.Evaluation.board_evaluation_service import __determine_points_from_central_squares # type: ignore
 
@@ -91,7 +91,32 @@ def test_board_evaluation_with_central_squares():
     points = __determine_points_from_central_squares(board.grid)
     assert points == 9
         
-          
+def test_board_evaluation_longest_railway():
+  '''
+  Tests, whether the board evaluation correctly identifies the longest railway.
+  '''
+  with open(os.path.join(current_dir, "Boards/one_network_board.json")) as f:
+    board = Board.from_json(f.read())
+    points = __determine_points_from_longest_railway(board)
+    assert points == 3
+
+def test_board_evaluation_longest_road_naive():
+  '''
+  Tests, whether the board evaluation correctly identifies the longest road on the board.
+  '''
+  with open(os.path.join(current_dir, "Boards/two_networks_board.json")) as f:
+    board = Board.from_json(f.read())
+    points = __determine_points_from_longest_road(board)
+    assert points == 5
+    
+def test_board_evaluation_longest_road_complex():
+  '''
+  Tests, whether the board evaluation correctly identifies the longest road on a complex, looping board.
+  '''
+  with open(os.path.join(current_dir, "Boards/complex_road_network_board.json")) as f:
+    board = Board.from_json(f.read())
+    points = __determine_points_from_longest_road(board)
+    assert points == 15
       
   
   

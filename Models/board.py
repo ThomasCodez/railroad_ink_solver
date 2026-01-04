@@ -13,6 +13,8 @@ class Board:
   each with (possible) connectors on its north, east, south, and west sides.
   Game Information is persisted on the squares itself.
   '''
+  squares: Set[Square] | None = None
+  
   def __init__(self):
     self._grid = self._create_grid()
     
@@ -32,17 +34,17 @@ class Board:
         row.append(Square(
           x = x,
           y = y,
-          north = self._determineNorthConnector(x, y),
-          east = self._determineEastConnector(x, y),
-          south = self._determineSouthConnector(x, y),
-          west = self._determineWestConnector(x, y)
+          north = self.__determine_north_connector(x, y),
+          east = self.__determine_east_connector(x, y),
+          south = self.__determine_south_connector(x, y),
+          west = self.__determine_west_connector(x, y)
         ))
       
       rows.append(row)
     
     return rows
       
-  def _determineNorthConnector(self, x: int, y: int) -> SquareConnectorType:
+  def __determine_north_connector(self, x: int, y: int) -> SquareConnectorType:
     '''
     Determines the connector type for the north side of a Square.
     '''
@@ -55,7 +57,7 @@ class Board:
     
     return SquareConnectorType.none 
   
-  def _determineEastConnector(self, x: int, y: int) -> SquareConnectorType:
+  def __determine_east_connector(self, x: int, y: int) -> SquareConnectorType:
     '''
     Determines the connector type for the east side of a Square.
     '''
@@ -68,7 +70,7 @@ class Board:
     
     return SquareConnectorType.none
   
-  def _determineSouthConnector(self, x: int, y: int) -> SquareConnectorType:
+  def __determine_south_connector(self, x: int, y: int) -> SquareConnectorType:
     '''
     Determines the connector type for the south side of a Square.
     '''
@@ -81,7 +83,7 @@ class Board:
     
     return SquareConnectorType.none
   
-  def _determineWestConnector(self, x: int, y:int) -> SquareConnectorType:
+  def __determine_west_connector(self, x: int, y:int) -> SquareConnectorType:
     '''
     Determines the connector type for the west side of a Square.
     '''
@@ -94,7 +96,7 @@ class Board:
     
     return SquareConnectorType.none
   
-  def getExitNodes(self) -> Set[Square]:
+  def get_exit_nodes(self) -> Set[Square]:
     '''
     Returns the exit nodes of the board.
     '''
@@ -111,6 +113,30 @@ class Board:
             self.grid[6][3],
             self.grid[6][5]
           }
+    
+  def get_all_squares(self) -> Set[Square]:
+    '''
+    Returns all squares of the board as a set.
+    '''
+    if self.squares is not None:
+      return self.squares
+
+    self.squares = set()
+    
+    for row in self._grid:
+      for square in row:
+        self.squares.add(square)
+        
+    return self.squares
+  
+  def get_squares_with_pieces(self) -> Set[Square]:
+    '''
+    Returns all squares of the board that have pieces placed on them.
+    '''
+    all_squares: Set[Square] = self.get_all_squares()
+    occupied_squares = {square for square in all_squares if square.piece is not None}
+    
+    return occupied_squares
     
   def to_json(self) -> None:
     '''
@@ -135,7 +161,6 @@ class Board:
       grid_data.append(row_data) # type: ignore
     
     data = json.dumps(grid_data, indent=2)
-    print("we are here")
     
     with open("board.json", 'w') as file:
       file.write(data)
