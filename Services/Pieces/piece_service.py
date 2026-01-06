@@ -1,6 +1,6 @@
 import json
 from typing import Any, List
-from Models.enums import BasicDice, SpecialDice, SquareConnectorType
+from Models.enums import BasicDice, SpecialDice, SquareConnectorType, UniqueTiles
 from Models.piece import Piece
 
 def __get_piece(json: dict[str, Any]) -> Piece:
@@ -20,7 +20,9 @@ def __get_piece(json: dict[str, Any]) -> Piece:
     json["dice"] = BasicDice[dice]
   elif dice in SpecialDice.__members__:
     json["dice"] = SpecialDice[dice]
-    
+  elif dice in UniqueTiles.__members__:
+    json["dice"] = UniqueTiles[dice]
+   
   return Piece(**json)
 
 def get_all_basic_pieces() -> List[Piece]:

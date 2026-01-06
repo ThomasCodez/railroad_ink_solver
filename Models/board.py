@@ -9,9 +9,13 @@ from Services.Pieces.piece_service import get_piece_by_name
 
 class Board:
   '''
-  Represents the game board for Railroad Ink. The board is a 7x7 grid of Squares, 
-  each with (possible) connectors on its north, east, south, and west sides.
-  Game Information is persisted on the squares itself.
+  Represents the game board for Railroad Ink. The board is a 7x7 grid of Squares.
+  
+  COORDINATE SYSTEM:
+  - Uses (column, row) indexing where (0,0) is TOP-LEFT corner
+  - column (x): 0 = left edge, 6 = right edge
+  - row (y): 0 = top edge, 6 = bottom edge
+  - Access via: grid[row][column] or grid[y][x]
   '''
   squares: Set[Square] | None = None
   
@@ -183,7 +187,6 @@ class Board:
     
     for row in data:
       for col in row:
-        print(col)
         square: Square = grid[col['x']][col['y']] # type: ignore
         if col['piece'] is not None:
           square.piece = get_piece_by_name(col['piece'])

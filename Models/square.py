@@ -7,9 +7,9 @@ class Square:
   Represents a square on the board. 
 
   Attributes:
-    x: x coordinate of the square. Increases from left to right. 0 < x < 7
+    x: column (0,6, left to right)
     
-    y: y coordinate of the square. Increases from right to left. 0 < y < 7
+    y: row (0,6, top to bottom)
     
     north: indicates the type of connector the square has to the north
     
