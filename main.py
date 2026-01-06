@@ -12,4 +12,4 @@ with open('Tests/Boards/complex_road_network_board.json') as f:
     board = board.from_json(f.read())
     points = evaluate_board_position(board)
     print(points)
-    visualize_board_matplotlib(board, "complex_road_network_board.png")
+    visualize_board_matplotlib(board, "View/Output/complex_road_network_board.png")
