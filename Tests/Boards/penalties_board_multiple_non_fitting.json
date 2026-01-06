@@ -1,0 +1,506 @@
+[
+  [
+    {
+      "x": 0,
+      "y": 0,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": "curved_rail_west_north"
+    },
+    {
+      "x": 0,
+      "y": 1,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "railway",
+      "is_central": false,
+      "piece": "straight_rail_east_west"
+    },
+    {
+      "x": 0,
+      "y": 2,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 0,
+      "y": 3,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "road",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 0,
+      "y": 4,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 0,
+      "y": 5,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "railway",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 0,
+      "y": 6,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    }
+  ],
+  [
+    {
+      "x": 1,
+      "y": 0,
+      "north": "road",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": "straight_train_station_north_road_south_rail"
+    },
+    {
+      "x": 1,
+      "y": 1,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": "curved_rail_west_north"
+    },
+    {
+      "x": 1,
+      "y": 2,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 1,
+      "y": 3,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 1,
+      "y": 4,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 1,
+      "y": 5,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 1,
+      "y": 6,
+      "north": "none",
+      "east": "none",
+      "south": "road",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    }
+  ],
+  [
+    {
+      "x": 2,
+      "y": 0,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 2,
+      "y": 1,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 2,
+      "y": 2,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": true,
+      "piece": null
+    },
+    {
+      "x": 2,
+      "y": 3,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": true,
+      "piece": "curved_rail_west_north"
+    },
+    {
+      "x": 2,
+      "y": 4,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": true,
+      "piece": null
+    },
+    {
+      "x": 2,
+      "y": 5,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 2,
+      "y": 6,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    }
+  ],
+  [
+    {
+      "x": 3,
+      "y": 0,
+      "north": "railway",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 3,
+      "y": 1,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 3,
+      "y": 2,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": true,
+      "piece": null
+    },
+    {
+      "x": 3,
+      "y": 3,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": true,
+      "piece": null
+    },
+    {
+      "x": 3,
+      "y": 4,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": true,
+      "piece": null
+    },
+    {
+      "x": 3,
+      "y": 5,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 3,
+      "y": 6,
+      "north": "none",
+      "east": "none",
+      "south": "railway",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    }
+  ],
+  [
+    {
+      "x": 4,
+      "y": 0,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 4,
+      "y": 1,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 4,
+      "y": 2,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": true,
+      "piece": null
+    },
+    {
+      "x": 4,
+      "y": 3,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": true,
+      "piece": null
+    },
+    {
+      "x": 4,
+      "y": 4,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": true,
+      "piece": null
+    },
+    {
+      "x": 4,
+      "y": 5,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 4,
+      "y": 6,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    }
+  ],
+  [
+    {
+      "x": 5,
+      "y": 0,
+      "north": "road",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 5,
+      "y": 1,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 5,
+      "y": 2,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 5,
+      "y": 3,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 5,
+      "y": 4,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 5,
+      "y": 5,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 5,
+      "y": 6,
+      "north": "none",
+      "east": "none",
+      "south": "road",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    }
+  ],
+  [
+    {
+      "x": 6,
+      "y": 0,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 6,
+      "y": 1,
+      "north": "none",
+      "east": "railway",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 6,
+      "y": 2,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 6,
+      "y": 3,
+      "north": "none",
+      "east": "road",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 6,
+      "y": 4,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 6,
+      "y": 5,
+      "north": "none",
+      "east": "railway",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    },
+    {
+      "x": 6,
+      "y": 6,
+      "north": "none",
+      "east": "none",
+      "south": "none",
+      "west": "none",
+      "is_central": false,
+      "piece": null
+    }
+  ]
+]

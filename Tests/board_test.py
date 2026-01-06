@@ -2,9 +2,10 @@ import os
 from Models.board import Board
 from Models.enums import SquareConnectorType
 from Models.square import Square
-from Services.Board.Evaluation.board_evaluation_service import determine_points_from_longest_railway, determine_points_from_longest_road, evaluate_board_position # type: ignore
+from Services.Board.Evaluation.board_evaluation_service import determine_deductions_for_unconnected_pieces, determine_points_from_longest_railway, determine_points_from_longest_road, evaluate_board_position # type: ignore
 from Services.Board.Evaluation.board_evaluation_service import determine_points_from_networks # type: ignore
 from Services.Board.Evaluation.board_evaluation_service import determine_points_from_central_squares # type: ignore
+import pytest
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -64,23 +65,22 @@ def test_board_evaluation_with_empty_board():
     points = evaluate_board_position(board)
     assert points == 0
           
-def test_board_evaluation_one_network():
-  '''
-  Tests, whether the board evaluation returns the correct amount of points for a board with one network.
-  '''
-  with open(os.path.join(current_dir, "Boards/one_network_board.json")) as f:
-    board = Board.from_json(f.read())
-    points = determine_points_from_networks(board)
-    assert points == 4
+@pytest.mark.parametrize("filename, expected_points", [
+    ("Boards/one_network_board.json", 4),
+    ("Boards/two_networks_board.json", 12),
+], ids=["one_network", "two_networks"])
+def test_board_evaluation_networks(filename: str, expected_points: int):
+    """
+    Tests whether the board evaluation returns the correct amount of points 
+    from networks for different board configurations.
+    """
+    file_path = os.path.join(current_dir, filename)
     
-def test_board_evaluation_two_networks():
-  '''
-  Tests, whether the board evaluation returns the correct amount of points for a board with two networks.
-  '''
-  with open(os.path.join(current_dir, "Boards/two_networks_board.json")) as f:
-    board = Board.from_json(f.read())
+    with open(file_path) as f:
+        board = Board.from_json(f.read())
+        
     points = determine_points_from_networks(board)
-    assert points == 12
+    assert points == expected_points
 
 def test_board_evaluation_with_central_squares():
   '''
@@ -100,23 +100,33 @@ def test_board_evaluation_longest_railway():
     points = determine_points_from_longest_railway(board)
     assert points == 3
 
-def test_board_evaluation_longest_road_naive():
-  '''
-  Tests, whether the board evaluation correctly identifies the longest road on the board.
-  '''
-  with open(os.path.join(current_dir, "Boards/two_networks_board.json")) as f:
-    board = Board.from_json(f.read())
-    points = determine_points_from_longest_road(board)
-    assert points == 5
+@pytest.mark.parametrize("filename, expected_points", [
+    ("Boards/two_networks_board.json", 5),
+    ("Boards/complex_road_network_board.json", 15),
+], ids=["naive_two_networks", "complex_looping"]) 
+def test_board_evaluation_longest_road(filename: str, expected_points: int):
+    """
+    Tests whether the board evaluation correctly identifies the longest road 
+    for various board configurations.
+    """
+    file_path = os.path.join(current_dir, filename)
     
-def test_board_evaluation_longest_road_complex():
-  '''
-  Tests, whether the board evaluation correctly identifies the longest road on a complex, looping board.
-  '''
-  with open(os.path.join(current_dir, "Boards/complex_road_network_board.json")) as f:
-    board = Board.from_json(f.read())
+    with open(file_path) as f:
+        board = Board.from_json(f.read())
+        
     points = determine_points_from_longest_road(board)
-    assert points == 15
-      
-  
-  
+    assert points == expected_points
+
+@pytest.mark.parametrize("board_name, expected_deductions", [
+    ("penalties_board_middle_piece_non_fitting.json", 2),
+    ("penalties_board_edge_piece_non_fitting.json", 2),
+    ("penalties_board_multiple_non_fitting.json", 4),
+])
+def test_board_evaluation_penalties_edge_piece_non_fitting(board_name: str, expected_deductions: int):
+  '''
+  Tests, whether the board evaluation correctly applies penalties for unconnected pieces.
+  '''
+  with open(os.path.join(current_dir, "Boards/" + board_name)) as f:
+    board = Board.from_json(f.read())
+    deductions = determine_deductions_for_unconnected_pieces(board)
+    assert deductions == expected_deductions

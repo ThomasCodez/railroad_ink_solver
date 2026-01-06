@@ -76,7 +76,62 @@ def determine_points_from_longest_railway(board: Board) -> int:
   return longest_rail
 
 def determine_deductions_for_unconnected_pieces(board: Board) -> int:
-  return 0
+  occupied_squares: Set[Square] = board.get_squares_with_pieces()
+  exit_nodes = board.get_exit_nodes()
+  
+  deductions: int = 0
+  # First, handle exit nodes
+  occupied_exit_nodes = occupied_squares.intersection(exit_nodes)
+  for node in occupied_exit_nodes:
+    assert node.piece is not None
+    
+    # If the piece fits the exit node, no deduction
+    if __piece_fits_exit_node(node):
+      continue
+    deductions += 1
+  
+  # Handle all other squares
+  occupied_non_exit_squares = occupied_squares.difference(exit_nodes)
+  for square in occupied_non_exit_squares:
+    assert square.piece is not None
+    
+    # North
+    if square.piece.north != SquareConnectorType.none:
+      if square.y == 0:
+        deductions += 1
+      else:
+        adjacent = board.grid[square.x][square.y - 1]
+        if adjacent.piece is None or adjacent.piece.south != square.piece.north:
+          deductions += 1
+    
+    # East
+    if square.piece.east != SquareConnectorType.none:
+      if square.x == 6:
+        deductions += 1
+      else:
+        adjacent = board.grid[square.x + 1][square.y]
+        if adjacent.piece is None or adjacent.piece.west != square.piece.east:
+          deductions += 1
+    
+    # South
+    if square.piece.south != SquareConnectorType.none:
+      if square.y == 6:
+        deductions += 1
+      else:
+        adjacent = board.grid[square.x][square.y + 1]
+        if adjacent.piece is None or adjacent.piece.north != square.piece.south:
+          deductions += 1
+    
+    # West
+    if square.piece.west != SquareConnectorType.none:
+      if square.x == 0:
+        deductions += 1
+      else:
+        adjacent = board.grid[square.x - 1][square.y]
+        if adjacent.piece is None or adjacent.piece.east != square.piece.west:
+          deductions += 1
+      
+  return deductions
 
 def __piece_fits_exit_node(node: Square) -> bool:
     '''
