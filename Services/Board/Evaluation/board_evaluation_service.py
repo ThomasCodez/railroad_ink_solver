@@ -1,4 +1,4 @@
-from typing import List, Set
+from typing import List, Set, Tuple
 from Models.board import Board
 from Models.enums import SpecialDice, SquareConnectorType
 from Models.square import Square
@@ -24,21 +24,44 @@ def determine_points_from_central_squares(grid: List[List[Square]]) -> int:
 def determine_points_from_networks(board: Board) -> int:
   exit_nodes: Set[Square] = board.get_exit_nodes()
   visited_exit_nodes: Set[Square] = set()
-  
   total_points: int = 0
-  
+
   for node in exit_nodes:
-    # Check if node is in network or doesn't have a piece
-    if node in visited_exit_nodes:
-      continue
-    
-    if __piece_fits_exit_node(node) is False:
-      continue
-    
-    visited: Set[Square] = set()
+      if node in visited_exit_nodes:
+          continue
+      if not __piece_fits_exit_node(node):
+          continue
+
+      # We need to determine the "virtual" incoming direction for the start node
+      # so the neighbor logic works correctly.
+      start_direction = ""
+      if node.y == 0: start_direction = "north"     # Came from top edge
+      elif node.y == 6: start_direction = "south"   # Came from bottom edge
+      elif node.x == 0: start_direction = "west"    # Came from left edge
+      elif node.x == 6: start_direction = "east"    # Came from right edge
+
+      visited: Set[tuple[Square, str]] = set()
+
+      __traverse_network(node, start_direction, exit_nodes, visited, visited_exit_nodes, board)
+
+      unique_exits_reached = {item[0] for item in visited if item[0] in exit_nodes and __piece_fits_exit_node(item[0])}
       
-    total_points += __traverse_network(node, exit_nodes, visited, visited_exit_nodes, board)
-    
+      count = len(unique_exits_reached)
+      scores: dict[int, int] = {
+        2: 4,
+        3: 8,
+        4: 12,
+        5: 16,
+        6: 20,
+        7: 24,
+        8: 28,
+        9: 32,
+        10: 36,
+        11: 40,
+        12: 45,
+      } 
+      total_points += scores.get(count, 0)
+
   return total_points
 
 def determine_points_from_longest_road(board: Board) -> int:
@@ -158,81 +181,81 @@ def __piece_fits_exit_node(node: Square) -> bool:
       
     return False
 
-def __traverse_network(node: Square, exit_nodes: Set[Square], visited: Set[Square], visited_exit_nodes: Set[Square], board: Board) -> int:
-  '''
-  Traverses the network recursively from an initial start node. Returns the amount of points this network is worth. 
-  Updates the visisted exit nodes 
-  '''
-  if node in visited:
-    return 0
-  
-  visited.add(node)
+def __traverse_network(node: Square, incoming_from: str, exit_nodes: Set[Square], 
+                       visited: Set[tuple[Square, str]], visited_exit_nodes: Set[Square], board: Board) -> None:
+    
+  # Check if we have visited this specific port on this square
+  if (node, incoming_from) in visited:
+      return
 
-  if node in exit_nodes:
-    # Only add to network if the piece fits the exit node
-    if __piece_fits_exit_node(node):
+  visited.add((node, incoming_from))
+
+  # Mark global visited set (for the outer loop optimization)
+  if node in exit_nodes and __piece_fits_exit_node(node):
       visited_exit_nodes.add(node)
-    
-  # Add all neighbors where the piece connects to, don't add neighbors whose connectors don't fit -> Not the same network!
-  neighbors: Set[Square] = __get_neighbors(node, board)
-    
-  for neighbor in neighbors:
-    __traverse_network(neighbor, exit_nodes, visited, visited_exit_nodes, board)
+
+  # Pass the incoming direction to get strict valid neighbors
+  neighbors_with_entry = __get_neighbors(node, incoming_from, board)
+
+  for neighbor, approach_direction in neighbors_with_entry:
+      __traverse_network(neighbor, approach_direction, exit_nodes, visited, visited_exit_nodes, board)
   
-  scores: dict[int, int] = {
-    2: 4,
-    3: 8,
-    4: 12,
-    5: 16,
-    6: 20,
-    7: 24,
-    8: 28,
-    9: 32,
-    10: 36,
-    11: 40,
-    12: 45,
-  }
-  
-  return scores[len(visited.intersection(exit_nodes))]
-  
-def __get_neighbors(node: Square, board: Board) -> Set[Square]:
-    '''
-    Returns all neighbors of a square that have a piece and the piece fits the connector. Undergrounds are treated specially.
-    '''
-    if node.piece is None:
+def __get_neighbors(node: Square, incoming_from: str, board: Board) -> Set[Tuple[Square, str]]:
+  '''
+  Returns a set of tuples: (NeighborSquare, The_Side_We_Enter_Neighbor_From).
+  '''
+  if node.piece is None:
       return set()
-    
-    # Special case: Undergrounds. 
-    if node.piece.dice == SpecialDice.underground:
-      pass # We have to fucking do something about this, but I don't know what yet.
+
+  allowed_outputs: list[str] = []
+  
+  is_underground = (node.piece.dice == SpecialDice.underground)
+  
+  # --- LOGIC FOR UNDERGROUNDS vs NORMAL ---
+  if is_underground:
+      # Undergrounds act as straight lines that do not turn or mix types
+      if incoming_from == "north": allowed_outputs = ["south"]
+      elif incoming_from == "south": allowed_outputs = ["north"]
+      elif incoming_from == "east": allowed_outputs = ["west"]
+      elif incoming_from == "west": allowed_outputs = ["east"]
+  else:
+      # Normal pieces (and Stations): If we entered correctly, we can exit 
+      # via ANY connector the piece has, essentially broadcasting to all connections.
+      # (Stations mix networks, so Road in -> Rail out is allowed).
       
-    neighbors: Set[Square] = set()
-    
-    if node.piece.north != SquareConnectorType.none and node.y > 0:
+      # Add all directions that have a connector (except the one we came from)
+      if node.piece.north != SquareConnectorType.none and incoming_from != "north": 
+          allowed_outputs.append("north")
+      if node.piece.south != SquareConnectorType.none and incoming_from != "south": 
+          allowed_outputs.append("south")
+      if node.piece.east != SquareConnectorType.none and incoming_from != "east": 
+          allowed_outputs.append("east")
+      if node.piece.west != SquareConnectorType.none and incoming_from != "west": 
+          allowed_outputs.append("west")
+
+  neighbors: Set[tuple[Square, str]] = set()
+  
+  if "north" in allowed_outputs and node.y > 0:
       adjacent = board.grid[node.x][node.y - 1]
-    
       if adjacent.piece and adjacent.piece.south == node.piece.north:
-        neighbors.add(adjacent)
-    
-    if node.piece.east != SquareConnectorType.none and node.x < 6:
-      adjacent = board.grid[node.x + 1][node.y]
-    
-      if adjacent.piece and adjacent.piece.west == node.piece.east:
-        neighbors.add(adjacent)
-  
-    if node.piece.south != SquareConnectorType.none and node.y < 6:
+          neighbors.add((adjacent, "south"))
+          
+  if "south" in allowed_outputs and node.y < 6:
       adjacent = board.grid[node.x][node.y + 1]
-    
       if adjacent.piece and adjacent.piece.north == node.piece.south:
-        neighbors.add(adjacent)
-  
-    if node.piece.west != SquareConnectorType.none and node.x > 0:
+          neighbors.add((adjacent, "north"))
+
+  if "east" in allowed_outputs and node.x < 6:
+      adjacent = board.grid[node.x + 1][node.y]
+      if adjacent.piece and adjacent.piece.west == node.piece.east:
+          neighbors.add((adjacent, "west"))
+
+  if "west" in allowed_outputs and node.x > 0:
       adjacent = board.grid[node.x - 1][node.y]
-    
       if adjacent.piece and adjacent.piece.east == node.piece.west:
-        neighbors.add(adjacent)
-        
-    return neighbors
+          neighbors.add((adjacent, "east"))
+          
+  return neighbors
 
 def __find_longest_path_from_node(node: Square, incoming_orientation: str, visited: set[tuple[Square, str]], board: Board, is_railway: bool) -> int:
   if (node, incoming_orientation) in visited:
@@ -258,10 +281,6 @@ def __get_rail_or_road_neighbors(node: Square, board: Board, incoming_orientatio
   neighbors: Set[tuple[Square, str]] = set()
   
   connector_type = SquareConnectorType.railway if is_railway else SquareConnectorType.road
-  
-  # Special case: Undergrounds. 
-  if node.piece.dice == SpecialDice.underground:
-      pass # We have to fucking do something about this, but I don't know what yet.
 
   if node.piece.north == connector_type and node.y > 0 and incoming_orientation != "south":
     adjacent = board.grid[node.x][node.y - 1]
@@ -288,23 +307,3 @@ def __get_rail_or_road_neighbors(node: Square, board: Board, incoming_orientatio
       neighbors.add((adjacent, "west"))
   
   return neighbors 
-    
-
-    
-    
-    
-  
-      
-    
-    
-      
-    
-      
-        
-    
-      
-    
-
-        
-  
-  
